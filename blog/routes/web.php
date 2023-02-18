@@ -22,8 +22,9 @@ Route::post('/posts', function (Request $request) {
     'description' => ['required', 'min:10'],
   ]);
 
-  return redirect()->route('posts.create')
+  return redirect()
+  ->route('posts.create')
   ->with('success', 'Post submitted! Title: ' .
-  $request->input('title') . 'Description: ' .
+  $request->input('title') . ' Description: ' .
   $request->input('description'));
 })->name('posts.store');

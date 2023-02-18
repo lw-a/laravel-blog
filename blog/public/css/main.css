@@ -1,3 +1,7 @@
+body {
+  background-color: #252838;
+}
+
 .main {
   margin-left: 20px;
 }
@@ -24,4 +28,27 @@
 
 .active {
   background-color: #EA412D;
+}
+.error {
+  color: #EA412D;
+}
+
+.error-border {
+  border: 2px solid #EA412D;
+}
+
+.flash-error {
+  padding: 20px;
+  background-color: #EA412D;
+  color: white;
+  margin: 20px 0px;
+  border-radius: 4px;
+}
+
+.flash-success {
+  padding: 20px;
+  background-color: #33a43a;
+  color: white;
+  margin: 20px 0px;
+  border-radius: 4px;
 }
