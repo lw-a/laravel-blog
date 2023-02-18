@@ -9,10 +9,20 @@
   @csrf
 
   <label>Title</label>
-  <input type="text" name="title">
+  <input type="text" value="{{ old('title') }}">
+  @error('title')
+  <div class="error">
+    {{ $message }}
+  </div>
+  @enderror
 
   <label>Description</label>
-  <textarea name="description"></textarea>
+  <textarea name="description">{{ old('description') }}</textarea>
+  @error('description')
+  <div class="error">
+    {{ $message }}
+  </div>
+  @enderror
 
   <button type="submit">Submit</button>
 </form>
