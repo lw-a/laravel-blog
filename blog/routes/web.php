@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Request;
 use Illuminate\Htpp\Request;
 
 Route::get('/', function () {
@@ -16,7 +17,7 @@ Route::get('/posts/create', function () {
 })->name('posts.create');
 
 Route::post('/posts', function (Request $request) {
-  // $request->input('title');
+  $request->input('title');
 
   return redirect()->route('posts.create');
 })->name('posts.store');
