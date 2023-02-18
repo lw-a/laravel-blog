@@ -12,8 +12,13 @@
       <li><a class="{{ request()->routeIS('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a></li>
       <li><a class="{{ request()->routeIS('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a></li>
       <li><a class="{{ request()->routeIS('posts.create') ? 'active' : '' }}" href="{{ route('posts.create') }}">Post</a></li>
-
     </ul>
+
+    @if (session('success'))
+    <div class="flash-success">
+      {{ session('success') }}
+    </div>
+    @endif
 
     <div class="main">
     @yield('content')

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use Illuminate\Support\Facades\Request;
-use Illuminate\Htpp\Request;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('home');
@@ -19,5 +19,8 @@ Route::get('/posts/create', function () {
 Route::post('/posts', function (Request $request) {
   $request->input('title');
 
-  return redirect()->route('posts.create');
+  return redirect()->route('posts.create')
+  ->with('success', 'Post submitted! Title: ' .
+  $request->input('title') . 'Description: ' .
+  $request->input('description'));
 })->name('posts.store');
