@@ -20,14 +20,7 @@
     </div>
     @endif
 
-    @if ($errors->any())
-    <div class="flash-error">
-      <b>Error:</b>
-      @foreach ($errors->all() as $error)
-      <p>{{ $error }}</p>
-      @endforeach
-    </div>
-    @endif
+    @includeWhen($errors->any(), '_errors')
 
     <div class="main">
     @yield('content')
