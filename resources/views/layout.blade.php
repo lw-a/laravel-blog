@@ -11,7 +11,14 @@
     <ul class="nav">
       <li><a class="{{ request()->routeIS('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a></li>
       <li><a class="{{ request()->routeIS('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a></li>
+      @auth
       <li><a class="{{ request()->routeIS('posts.create') ? 'active' : '' }}" href="{{ route('posts.create') }}">Post</a></li>
+      <li><a href="{{ route('logout') }}">Logout</a></li>
+      <li><p>Logged in as <b>{{ Auth::user()->name }}</b></p></li>
+      @else
+      <li><a class="{{ request()->routeIS('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
+      <li><a class="{{ request()->routeIS('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a></li>
+      @endauth
     </ul>
 
     @if (session('success'))
