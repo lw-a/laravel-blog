@@ -13,3 +13,4 @@ Route::resource('posts', PostController::class)->except(['index']);
 
 Route::match(['get', 'post'], '/register', [AuthController::class, 'register'])->name('register');
 Route::match(['get', 'post'], '/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
