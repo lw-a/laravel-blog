@@ -1,5 +1,5 @@
 body {
-  background-color: #252838;
+  background-color: #1A202C;
 }
 
 .main {
@@ -7,6 +7,10 @@ body {
 }
 
 h1 {
+  color: white;
+}
+
+.post-content {
   color: white;
 }
 

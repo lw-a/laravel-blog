@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function index()
-    // {
-    //     //
-    // }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,18 +24,22 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
-      $request->validate([
-        'title' => 'required',
-        'description' => ['required', 'min:10'],
-      ]);
+      $validated = $request->validated();
+
+      $post = Post::create($validated);
+
+      // $post = new Post();
+
+      // $post->title = $request->input('title');
+      // $post->description = $request->input('description');
+
+      // $post->save();
 
       return redirect()
-        ->route('posts.create')
-        ->with('success', 'Post submitted! Title: ' .
-        $request->input('title') . ' Description: ' .
-        $request->input('description'));
+        ->route('posts.show', [$post])
+        ->with('success', 'Post submitted.');
     }
 
     /**
@@ -52,9 +48,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('posts.show', ['post' => $post, ]);
     }
 
     /**
@@ -63,9 +59,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view ('posts.edit', ['post' => $post,]);
     }
 
     /**
@@ -75,9 +71,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostFormRequest $request, Post $post)
     {
-        //
+      $validated = $request->validated();
+
+      $post->update($validated);
+
+      // $post->title = $request->input('title');
+      // $post->description = $request->input('description');
+
+      // $post->save();
+
+      return redirect()
+        ->route('posts.show', [$post])
+        ->with('success', 'Post updated.');
     }
 
     /**
@@ -86,8 +93,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()
+        ->route('home')
+        ->with('success', 'Post deleted.');
     }
 }
