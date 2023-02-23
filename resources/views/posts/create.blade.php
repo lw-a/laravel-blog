@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Blog - Create a Post')
+@section('title', 'Post')
 
 @section('content')
 <h1>Create A Post</h1>
