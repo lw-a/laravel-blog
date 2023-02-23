@@ -1,6 +1,6 @@
 # Laravel Posts
 
-This is a posting app to practice features of the Laravel framework.
+This is a posting app created to practice features of the Laravel framework.
 
 For Example:
 - Routing Requests
