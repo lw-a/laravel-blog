@@ -3,7 +3,7 @@
 @section('title', 'Blog - Create a Post')
 
 @section('content')
-<h1>Create A Blog Post</h1>
+<h1>Create A Post</h1>
 
 <form method="POST" action="{{ route('posts.store') }}">
   @csrf
