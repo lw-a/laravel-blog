@@ -30,6 +30,20 @@ body {
   text-decoration: none;
 }
 
+.post-item {
+  width: 50%;
+  border: #EA412D solid 2px;
+  margin: 6px;
+}
+
+.post-content {
+  padding: 10px 20px;
+}
+
+.post-content h2 {
+  margin: 5px;
+}
+
 .post-content a {
   text-decoration: underline;
   color: #EA412D;
